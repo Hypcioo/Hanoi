@@ -1,0 +1,80 @@
+<div id=solution>
+<script>
+let nbCoup = 0
+hanoi(1,3,5)
+function hanoi(TourDepart,TourArrivee,nbPieces) 
+{
+    var tourIntermediaire
+    if (nbPieces == 0) return
+    tourIntermediaire = 6 - TourDepart - TourArrivee
+    hanoi(TourDepart, tourIntermediaire, nbPieces-1)
+    nbCoup++
+    solution.innerHTML += nbCoup + " : "
+    solution.innerHTML += TourDepart + " vers " + TourArrivee
+    solution.innerHTML += " (" + tourIntermediaire + " )"
+    solution.innerHTML += "<br>"
+    hanoi(tourIntermediaire, TourArrivee,nbPieces-1)
+}
+</script>
+</div>
+
+<div class="iframe-container">
+<iframe  width="700" height="600" src="http://championmath.free.fr/tourhanoi.htm"></iframe>
+</div>
+
+<div id=main>
+    <div id=left style=flex:1;>
+    <select onchange="nbCoup=0;solution.innerHTML='';hanoi(1,3,parseInt(this.value))">
+    <option value=3>3</option>
+    <option value=4>4</option>
+    <option value=5>5</option>
+    <option value=6>6</option>
+    <option value=7>7</option>
+    <option value=8>8</option>
+    </select>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<style>
+#main {
+        display: flex;
+        border:solid 5px blue;
+    }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.iframe-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 700px;
+    height: 600px;
+    border-left: 5px solid #ce4545;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+#solution {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border: 5px solid #3498db;
+}
+</style>
